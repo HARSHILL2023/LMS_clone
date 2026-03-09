@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Landingpage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center p-6 font-sans">
       {/* Logo Section */}
@@ -17,7 +20,10 @@ const Landingpage = () => {
       </p>
 
       {/* Login Button */}
-      <button className="bg-white text-black font-semibold text-[15px] py-2 px-8 rounded-lg hover:bg-gray-200 transition-colors mb-14">
+      <button
+        onClick={() => navigate('/login')}
+        className="bg-white text-black font-semibold text-[15px] py-2 px-8 rounded-lg hover:bg-gray-200 transition-colors mb-14"
+      >
         Login
       </button>
 
