@@ -13,7 +13,9 @@ const Login = () => {
             const userData = { role, email, timestamp: new Date().toISOString() };
             localStorage.setItem('lms_user', JSON.stringify(userData));
             alert(`Logged in successfully as ${role}`);
-            navigate('/');
+            
+            const dashboardPath = role === 'Student' ? '/student/dashboard' : '/admin/dashboard';
+            navigate(dashboardPath);
         } else {
             alert('Please fill in all fields');
         }
