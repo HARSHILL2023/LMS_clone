@@ -24,10 +24,8 @@ const Login = () => {
     return (
         <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-6 font-sans">
             <div className="w-full max-w-md bg-[#121212] border border-[#2a2a2a] rounded-2xl p-8 shadow-2xl">
-                <div className="text-center mb-8 flex justify-center items-center">
-                    <div className="bg-[#104cba] px-3 py-1 mr-1">
-                        <h1 className="text-white text-3xl font-bold tracking-tight">Coding</h1>
-                    </div>
+                <div className="text-center mb-8 flex justify-center items-center gap-2">
+                    <h1 className="text-white text-3xl font-bold tracking-tight">Coding</h1>
                     <h1 className="text-[#cfcfcf] text-3xl font-bold tracking-tight">Gita</h1>
                 </div>
 

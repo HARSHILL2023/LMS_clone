@@ -8,9 +8,7 @@ const Landingpage = () => {
     <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center p-6 font-sans">
       {/* Logo Section */}
       <div className="flex flex-col items-center mb-8">
-        <div className="bg-[#104cba] px-4 py-1.5">
-          <h1 className="text-white text-[70px] leading-none font-bold tracking-tight">Coding</h1>
-        </div>
+        <h1 className="text-white text-[70px] leading-none font-bold tracking-tight">Coding</h1>
         <h1 className="text-[#cfcfcf] text-[70px] leading-none font-bold tracking-tight mt-1">Gita</h1>
       </div>
 
