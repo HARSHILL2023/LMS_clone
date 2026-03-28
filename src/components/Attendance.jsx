@@ -58,7 +58,10 @@ const Attendance = ({ role: initialRole }) => {
                         >
                             Attendance
                         </button>
-                        <button className="px-3 py-1.5 text-[#a3a3a3] hover:text-white transition-colors">
+                        <button 
+                            onClick={() => navigate(`${rolePath}/calendar`)}
+                            className="px-3 py-1.5 text-[#a3a3a3] hover:text-white transition-colors"
+                        >
                             Calendar
                         </button>
                         <button className="px-3 py-1.5 text-[#a3a3a3] hover:text-white transition-colors">
