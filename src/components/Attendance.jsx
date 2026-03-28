@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Attendance = ({ role: initialRole }) => {
     const navigate = useNavigate();
+    const [isMoreOpen, setIsMoreOpen] = useState(false);
     const lmsUser = JSON.parse(localStorage.getItem('lms_user') || '{}');
     const role = initialRole || lmsUser.role || 'Student';
     const rolePath = role.toLowerCase() === 'admin' ? '/admin' : '/student';
@@ -67,12 +68,41 @@ const Attendance = ({ role: initialRole }) => {
                         <button className="px-3 py-1.5 text-[#a3a3a3] hover:text-white transition-colors">
                             Chat
                         </button>
-                        <button className="px-3 py-1.5 text-[#a3a3a3] hover:text-white transition-colors flex items-center gap-1">
-                            More
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
+                        <div className="relative group">
+                            <button 
+                                onClick={() => setIsMoreOpen(!isMoreOpen)}
+                                className={`px-3 py-1.5 text-[#a3a3a3] hover:text-white transition-colors flex items-center gap-1.5 rounded-md ${isMoreOpen ? 'bg-[#2a2a2a] text-white' : ''}`}
+                            >
+                                More
+                                <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${isMoreOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            
+                            {isMoreOpen && (
+                                <div className="absolute top-full left-0 mt-2 w-56 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl shadow-2xl py-2 z-50">
+                                    {[
+                                        { name: 'Semester Attendance', path: `${rolePath}/semester-attendance` },
+                                        { name: 'Feedback', path: '#' },
+                                        { name: 'Weekly Subject Feedback', path: '#' },
+                                        { name: 'Apply Leave', path: '#' }
+                                    ].map((item) => (
+                                        <button
+                                            key={item.name}
+                                            onClick={() => {
+                                                if (item.path !== '#') {
+                                                    navigate(item.path);
+                                                    setIsMoreOpen(false);
+                                                }
+                                            }}
+                                            className="w-full text-left px-4 py-2.5 text-sm text-[#a3a3a3] hover:text-white hover:bg-[#2a2a2a] transition-colors"
+                                        >
+                                            {item.name}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
 
