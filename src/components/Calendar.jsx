@@ -85,31 +85,35 @@ const Calendar = ({ role: initialRole }) => {
 
         // Add padding for start of month
         for (let i = 0; i < startDay; i++) {
-            days.push(<div key={`empty-${i}`} className="bg-transparent border border-[#2a2a2a]/30 h-28"></div>);
+            days.push(<div key={`empty-${i}`} className="bg-transparent border-[0.5px] border-[#2a2a2a]/40 h-28"></div>);
         }
 
         for (let i = 1; i <= totalDays; i++) {
-            const isToday = i === 28 && currentDate.getMonth() === 2 && currentDate.getFullYear() === 2026;
-            const isSelected = selectedDate.getDate() === i && selectedDate.getMonth() === currentDate.getMonth() && selectedDate.getFullYear() === currentDate.getFullYear();
+            const cellDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
+            const isToday = cellDate.toDateString() === new Date(2026, 2, 28).toDateString();
+            const isSelected = cellDate.toDateString() === selectedDate.toDateString();
             
             days.push(
                 <div 
                     key={i} 
-                    onClick={() => setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), i))}
-                    className={`h-28 border border-[#2a2a2a]/30 p-3 cursor-pointer transition-all hover:bg-[#1a1a1a] group relative ${
-                        isSelected ? 'ring-2 ring-blue-500/50 bg-[#151515]/50 z-10' : ''
-                    } ${isToday ? 'bg-[#151515]/30' : ''}`}
+                    onClick={() => setSelectedDate(cellDate)}
+                    className={`h-28 border-[0.5px] border-[#2a2a2a]/40 p-3 cursor-pointer transition-all hover:bg-[#1a1a1a] group relative ${
+                        isSelected ? 'z-20 ring-[2px] ring-blue-500/80 ring-inset bg-blue-500/10' : ''
+                    } ${isToday && !isSelected ? 'bg-white/5' : ''}`}
                 >
-                    <span className={`text-sm font-medium transition-colors ${
-                        isToday ? 'text-white' : isSelected ? 'text-white' : 'text-[#a3a3a3]'
-                    }`}>
-                        {i}
-                    </span>
+                    <div className="flex justify-between items-start">
+                        <span className={`text-sm font-semibold transition-colors ${
+                            isToday ? 'text-blue-400' : isSelected ? 'text-white' : 'text-[#a3a3a3]'
+                        }`}>
+                            {i}
+                        </span>
+                        {isToday && <div className="w-1 h-1 rounded-full bg-blue-400 mt-1"></div>}
+                    </div>
                     
                     {/* Event indicators (dummy) */}
-                    <div className="mt-auto flex flex-wrap gap-1">
-                        {i % 7 === 0 && <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>}
-                        {i % 10 === 0 && <div className="w-1.5 h-1.5 rounded-full bg-red-500"></div>}
+                    <div className="absolute bottom-3 left-3 flex flex-wrap gap-1">
+                        {i % 7 === 0 && <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_5px_rgba(59,130,246,0.5)]"></div>}
+                        {i % 10 === 0 && <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_5px_rgba(239,68,68,0.5)]"></div>}
                     </div>
                 </div>
             );

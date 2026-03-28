@@ -129,11 +129,11 @@ const Dashboard = ({ role: initialRole }) => {
                         <div className="space-y-3 pt-2 text-sm">
                             <div className="flex justify-between">
                                 <span className="text-[#a3a3a3]">Mobile</span>
-                                <span>6357245646</span>
+                                <span>9664731583</span>
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-[#a3a3a3]">DOB</span>
-                                <span>N/A</span>
+                                <span>23-01-2023</span>
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-[#a3a3a3]">University</span>
