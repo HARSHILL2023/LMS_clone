@@ -36,8 +36,8 @@ const SemesterAttendance = ({ role: initialRole }) => {
     };
 
     const currentSem = selectedSemester === 1 ? sem1Data : sem2Data;
-    const bonusPct = currentSem.bonusAttendance 
-        ? Math.round(((currentSem.presentCount + currentSem.bonusAttendance) * 100) / currentSem.totalMarked) 
+    const bonusPct = currentSem.bonusAttendance
+        ? Math.round(((currentSem.presentCount + currentSem.bonusAttendance) * 100) / currentSem.totalMarked)
         : null;
 
     const navItems = [
@@ -73,27 +73,25 @@ const SemesterAttendance = ({ role: initialRole }) => {
                             <button
                                 key={item.name}
                                 onClick={() => item.path !== '#' && navigate(item.path)}
-                                className={`px-3 py-1.5 rounded-md transition-colors ${
-                                    item.name === 'More' ? 'bg-[#2a2a2a] text-white' : 'text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]'
-                                }`}
+                                className={`px-3 py-1.5 rounded-md transition-colors ${item.name === 'More' ? 'bg-[#2a2a2a] text-white' : 'text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]'
+                                    }`}
                             >
                                 {item.name}
                             </button>
                         ))}
-                        
+
                         <div className="relative">
-                            <button 
+                            <button
                                 onClick={() => setIsMoreOpen(!isMoreOpen)}
-                                className={`px-3 py-1.5 rounded-md transition-colors flex items-center gap-1.5 ${
-                                    isMoreOpen ? 'bg-[#2a2a2a] text-white shadow-md' : 'text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]'
-                                }`}
+                                className={`px-3 py-1.5 rounded-md transition-colors flex items-center gap-1.5 ${isMoreOpen ? 'bg-[#2a2a2a] text-white shadow-md' : 'text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]'
+                                    }`}
                             >
                                 More
                                 <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${isMoreOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
                                 </svg>
                             </button>
-                            
+
                             {isMoreOpen && (
                                 <div className="absolute top-full left-0 mt-2 w-56 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl shadow-2xl py-2 z-[60]">
                                     {moreItems.map((item) => (
@@ -147,11 +145,10 @@ const SemesterAttendance = ({ role: initialRole }) => {
                                     <button
                                         key={num}
                                         onClick={() => setSelectedSemester(num)}
-                                        className={`w-full text-left p-4 rounded-xl border transition-all ${
-                                            selectedSemester === num 
-                                            ? 'bg-blue-500/10 border-blue-500/50 ring-1 ring-blue-500/20' 
-                                            : 'bg-[#0d0d0d] border-[#2a2a2a] hover:border-[#404040]'
-                                        }`}
+                                        className={`w-full text-left p-4 rounded-xl border transition-all ${selectedSemester === num
+                                                ? 'bg-blue-500/10 border-blue-500/50 ring-1 ring-blue-500/20'
+                                                : 'bg-[#0d0d0d] border-[#2a2a2a] hover:border-[#404040]'
+                                            }`}
                                     >
                                         <div className="font-semibold text-sm">Semester {num}</div>
                                         <div className="text-[10px] text-[#a3a3a3] mt-1 uppercase tracking-wider tabular-nums">
@@ -185,8 +182,8 @@ const SemesterAttendance = ({ role: initialRole }) => {
                                     <span className="text-xs font-bold tabular-nums">{currentSem.overall}%</span>
                                 </div>
                                 <div className="h-2 bg-[#1a1a1a] rounded-full overflow-hidden border border-[#2a2a2a]/50">
-                                    <div 
-                                        className={`h-full transition-all duration-1000 ${currentSem.overall < 75 ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.3)]' : 'bg-[#10b981] shadow-[0_0_10px_rgba(16,185,129,0.3)]'}`} 
+                                    <div
+                                        className={`h-full transition-all duration-1000 ${currentSem.overall < 75 ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.3)]' : 'bg-[#10b981] shadow-[0_0_10px_rgba(16,185,129,0.3)]'}`}
                                         style={{ width: `${currentSem.overall}%` }}
                                     ></div>
                                 </div>
@@ -273,7 +270,7 @@ const SemesterAttendance = ({ role: initialRole }) => {
                                 <p className="text-sm font-medium">Your attendance is critically low. Please prioritize attending classes.</p>
                             </div>
                         )}
-                        
+
                         {/* Status Footer Placeholder */}
                         <div className="bg-[#111111] border border-[#2a2a2a] rounded-2xl p-6">
                             <h3 className="text-sm font-semibold mb-2">Attendance Status</h3>
