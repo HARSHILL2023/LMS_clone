@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import Attendance from './components/Attendance';
 import Calendar from './components/Calendar';
 import SemesterAttendance from './components/SemesterAttendance';
+import Profile from './components/Profile';
 import './App.css';
 
 const App = () => {
@@ -20,18 +21,21 @@ const App = () => {
         <Route path="/student/attendance" element={<Attendance role="Student" />} />
         <Route path="/student/calendar" element={<Calendar role="Student" />} />
         <Route path="/student/semester-attendance" element={<SemesterAttendance role="Student" />} />
+        <Route path="/student/profile" element={<Profile role="Student" />} />
         
         {/* Admin/Mentor Routes */}
         <Route path="/admin/dashboard" element={<Dashboard role="Admin" />} />
         <Route path="/admin/attendance" element={<Attendance role="Admin" />} />
         <Route path="/admin/calendar" element={<Calendar role="Admin" />} />
         <Route path="/admin/semester-attendance" element={<SemesterAttendance role="Admin" />} />
+        <Route path="/admin/profile" element={<Profile role="Admin" />} />
         
         {/* Fallback */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/attendance" element={<Attendance />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/semester-attendance" element={<SemesterAttendance />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
